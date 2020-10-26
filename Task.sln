@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task", "Task\Task.csproj", "{4D7AC815-E568-452E-8B6D-173436D181E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskDAL", "TaskDAL\TaskDAL.csproj", "{0DDA9DB5-0F3E-4ECD-B805-09A50611C440}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task.Models", "Task.Models\Task.Models.csproj", "{53D90F24-8A2E-42B7-9CAE-0C88B3343901}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D7AC815-E568-452E-8B6D-173436D181E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D7AC815-E568-452E-8B6D-173436D181E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D7AC815-E568-452E-8B6D-173436D181E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D7AC815-E568-452E-8B6D-173436D181E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DDA9DB5-0F3E-4ECD-B805-09A50611C440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DDA9DB5-0F3E-4ECD-B805-09A50611C440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DDA9DB5-0F3E-4ECD-B805-09A50611C440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DDA9DB5-0F3E-4ECD-B805-09A50611C440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53D90F24-8A2E-42B7-9CAE-0C88B3343901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D90F24-8A2E-42B7-9CAE-0C88B3343901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D90F24-8A2E-42B7-9CAE-0C88B3343901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D90F24-8A2E-42B7-9CAE-0C88B3343901}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C7CDBA8-DB1A-45FC-8741-357A7D3C950C}
+	EndGlobalSection
+EndGlobal
