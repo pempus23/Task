@@ -58,6 +58,10 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositpry\AnnouncementRepo.cs" />
+    <Compile Include="Repositpry\BaseRepo.cs" />
+    <Compile Include="Repositpry\IRepository.cs" />
+    <Compile Include="Repositpry\IRepository1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -77,6 +81,7 @@
       <DependentUpon>202010262212517_FirstTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
