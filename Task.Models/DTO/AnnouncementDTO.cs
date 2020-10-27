@@ -1,5 +1,5 @@
 ﻿using AutoLotDAL.Models.Base;
-using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace Task.Models.DTO
 {
@@ -7,6 +7,6 @@ namespace Task.Models.DTO
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public DataType DataAdded { get; set; }
+        public DateTime DataAdded { get; set; }
     }
 }
