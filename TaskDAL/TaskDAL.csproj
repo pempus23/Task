@@ -57,6 +57,10 @@
     <Compile Include="Migrations\202010262212517_FirstTable.designer.cs">
       <DependentUpon>202010262212517_FirstTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010271334469_ChangeData.cs" />
+    <Compile Include="Migrations\202010271334469_ChangeData.designer.cs">
+      <DependentUpon>202010271334469_ChangeData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositpry\AnnouncementRepo.cs" />
@@ -79,6 +83,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010262212517_FirstTable.resx">
       <DependentUpon>202010262212517_FirstTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010271334469_ChangeData.resx">
+      <DependentUpon>202010271334469_ChangeData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

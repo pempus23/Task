@@ -9,9 +9,9 @@ namespace TaskDAL.Repositpry
 {
     public class AnnouncementRepo :BaseRepo<Announcement>, IRepository<Announcement>
     {
-        public List<Announcement> GetNotAll(int id)
+        public override List<Announcement> GetAll()
         {
-            return (Context.Announcements.Where(c => c.Id == id).ToList());
+            return Context.Announcements.OrderBy(x => x.Id).ToList();
         }
     }
     
