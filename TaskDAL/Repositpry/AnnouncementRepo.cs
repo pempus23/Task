@@ -7,7 +7,7 @@ using Task.Models;
 
 namespace TaskDAL.Repositpry
 {
-    public class AnnouncementRepo :BaseRepo<Announcement>
+    public class AnnouncementRepo :BaseRepo<Announcement>, IRepository<Announcement>
     {
         public List<Announcement> GetNotAll(int id)
         {

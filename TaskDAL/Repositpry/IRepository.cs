@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TaskDAL.Repositpry
 {
-    interface IRepository<T> : IDisposable
+    public interface IRepository<T> : IDisposable
     {
         int Add(T entity);
         int Save(T entity);

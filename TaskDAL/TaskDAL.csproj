@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EF\MyDataInitializer.cs" />
     <Compile Include="EF\TaskEntities.cs" />
     <Compile Include="Migrations\202010262212517_FirstTable.cs" />
     <Compile Include="Migrations\202010262212517_FirstTable.designer.cs">
@@ -61,7 +62,6 @@
     <Compile Include="Repositpry\AnnouncementRepo.cs" />
     <Compile Include="Repositpry\BaseRepo.cs" />
     <Compile Include="Repositpry\IRepository.cs" />
-    <Compile Include="Repositpry\IRepository1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

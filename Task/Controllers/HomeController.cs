@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using AutoMapper;
+using System.Web.Http;
+using Task.Models;
+using TaskDAL.Repositpry;
 
 namespace Task.Controllers
 {
-    public class HomeController : Controller
+    [RoutePrefix("api/Ann")]
+    public class HomeController : ApiController
     {
-        public ActionResult Index()
+        private readonly IRepository<Announcement> _repository;
+        private readonly IMapper _mapper;
+        public HomeController(IRepository<Announcement> repository, IMapper mapper) 
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
+            _repository = repository;
+            _mapper = mapper;
         }
     }
 }
