@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Description;
 using Task.Models;
 using Task.Models.DTO;
 using TaskDAL.Repositpry;
@@ -35,6 +37,40 @@ namespace Task.Controllers
                 _repository.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost, Route("")]
+        [ResponseType(typeof(Announcement))]
+        public IHttpActionResult PostInventory(Announcement item)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                _repository.Add(item);
+            }
+            catch (Exception ex)
+            {
+                //must be other actions
+                throw;
+            }
+            return CreatedAtRoute("DisplayRoute", new { id = item.Id }, item);
+        }
+        [HttpDelete, Route("{id}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult Delete(int id)
+        {
+            try
+            {
+                _repository.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return Ok();
         }
     }
 }

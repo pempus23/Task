@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,12 @@ namespace TaskDAL.Repositpry
         public override List<Announcement> GetAll()
         {
             return Context.Announcements.OrderBy(x => x.Id).ToList();
+        }
+        public override int Add(Announcement entity)
+        {
+            entity.DateAdded = DateTime.Now;
+            Context.Entry(entity).State = EntityState.Added;
+            return SaveChanges();
         }
     }
     
