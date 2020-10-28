@@ -45,7 +45,7 @@ namespace TaskDAL.Repositpry
         public T GetOne(int? id)
             => _table.Find(id);
 
-        public int Save(T entity)
+        public virtual int Save(T entity)
         {
             _db.Entry(entity).State = EntityState.Modified;
             return SaveChanges();

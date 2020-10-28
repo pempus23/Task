@@ -20,6 +20,12 @@ namespace TaskDAL.Repositpry
             Context.Entry(entity).State = EntityState.Added;
             return SaveChanges();
         }
+        public override int Save(Announcement entity)
+        {
+            entity.DateAdded = DateTime.Now;
+            Context.Entry(entity).State = EntityState.Modified;
+            return SaveChanges();
+        }
     }
     
 }

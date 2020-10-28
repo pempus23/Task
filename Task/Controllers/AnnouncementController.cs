@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Task.Models;
@@ -23,12 +25,24 @@ namespace Task.Controllers
             _repository = repository;
             _mapper = mapper;
         }
+
         [HttpGet, Route("")]
         public IHttpActionResult GetList()
         {
             var announcement = _repository.GetAll();
             return Ok(_mapper.Map<List<AnnouncementDTO>>(announcement));
 
+        }
+        [HttpGet, Route("{id}", Name = "DisplayRoute")]
+        [ResponseType(typeof(AnnouncementDTO))]
+        public async Task<IHttpActionResult> GetOne(int id)
+        {
+            Announcement item = _repository.GetOne(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return Ok(_mapper.Map<AnnouncementDTO>(item));
         }
         protected override void Dispose(bool disposing)
         {
@@ -71,6 +85,28 @@ namespace Task.Controllers
                 throw;
             }
             return Ok();
+        }
+        [HttpPut, Route("{id}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutChange(int id, Announcement item)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (id != item.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                _repository.Save(item);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }
