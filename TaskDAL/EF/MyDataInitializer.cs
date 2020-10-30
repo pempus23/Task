@@ -19,6 +19,8 @@ namespace TaskDAL.EF
                 new Announcement {Title = "Matt", Description = "Walton",DateAdded = new DateTime(2011, 3, 2, 18, 30, 25)},
                 new Announcement {Title = "Steve", Description = "Hagen",DateAdded = new DateTime(2008, 5, 10, 18, 30, 25)},
                 new Announcement {Title = "Pat", Description = "Walton",DateAdded = new DateTime(2018, 7, 11, 18, 30, 25)},
+                new Announcement {Title = "asdasd Pat", Description = "",DateAdded = new DateTime(2018, 7, 11, 18, 30, 25)},
+                new Announcement {Title = "Pat Pat", Description = "",DateAdded = new DateTime(2018, 7, 11, 18, 30, 25)},
                 new Announcement {Title = "Bad", Description = "Customer",DateAdded = new DateTime(2025, 7, 7, 18, 30, 25)},
             };
             announ.ForEach(x => context.Announcements.AddOrUpdate(

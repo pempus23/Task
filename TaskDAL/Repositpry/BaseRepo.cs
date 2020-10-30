@@ -40,8 +40,6 @@ namespace TaskDAL.Repositpry
         public virtual List<T> GetAll()
             => _table.ToList();
             
-        
-
         public T GetOne(int? id)
             => _table.Find(id);
 
@@ -74,5 +72,8 @@ namespace TaskDAL.Repositpry
                 throw;
             }
         }
+
+        public abstract List<T> Similar(int? id);
+
     }
 }

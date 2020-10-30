@@ -67,7 +67,6 @@ namespace Task.Controllers
             }
             catch (Exception ex)
             {
-                //must be other actions
                 throw;
             }
             return CreatedAtRoute("DisplayRoute", new { id = item.Id }, item);
@@ -107,6 +106,14 @@ namespace Task.Controllers
                 throw;
             }
             return StatusCode(HttpStatusCode.NoContent);
+        }
+        [HttpGet, Route("similar/{id}")]
+        [ResponseType(typeof(List<AnnouncementDTO>))]
+        public IHttpActionResult GetSimilar(int id)
+        {
+            List<Announcement> item = _repository.Similar(id);
+  
+            return Ok(_mapper.Map<List<AnnouncementDTO>>(item));
         }
     }
 }

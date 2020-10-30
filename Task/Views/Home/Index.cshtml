@@ -27,6 +27,7 @@
             </div>
         </form>
     <table class="table table-condensed table-striped  col-md-6">
+    <button type="submit" id="submit" class="btn btn-success btn-lg btn-block" onclick="reloadPage()">refresh the list</button>
     <thead><tr><th>Id</th><th>Title</th><th>Date</th></tr></thead>
     <tbody>
     </tbody>
@@ -45,8 +46,8 @@
                  const anno = await response.json();
                 console.log(anno);
                 let rows = document.querySelector("tbody"); 
-                anno.forEach(car => {
-                    rows.append(row(car));
+                anno.forEach(an => {
+                    rows.append(row(an));
                 });
             }
         };
@@ -62,8 +63,8 @@
                 })
             });
             if (response.ok === true) {
-                const car = await response.json();
-                document.querySelector("tbody").append(row(car));
+                const an = await response.json();
+                document.querySelector("tbody").append(row(an));
             }
         }
 
@@ -94,52 +95,51 @@
             }
         }
 
-    function row(car) {
+    function row(an) {
  
             const tr = document.createElement("tr");
-            tr.setAttribute("data-rowid", car.Id);
+            tr.setAttribute("data-rowid", an.Id);
  
             const idTd = document.createElement("td");
-            idTd.append(car.Id);
+            idTd.append(an.Id);
             tr.append(idTd);
  
             const nameTd = document.createElement("td");
-            nameTd.append(car.Title);
+            nameTd.append(an.Title);
             tr.append(nameTd);
 
              const makeTd = document.createElement("td");
-            makeTd.append(car.DateAdded);
+            makeTd.append(an.DateAdded);
             tr.append(makeTd);
              
             const linksTd = document.createElement("td");
 
             const details = document.createElement("a");
-            details.setAttribute("data-id", car.Id);
+            details.setAttribute("data-id", an.Id);
             details.setAttribute("style", "cursor:pointer;padding:3px;");
             details.setAttribute("class", "btn btn-primary");
             details.append("Description");
             details.addEventListener("click", e => {
  
                 e.preventDefault();
-                alert(car.Description);
-                //GetUser(car.Id);
+                alert(an.Description);
             });
             linksTd.append(details);
  
             const editLink = document.createElement("a");
-            editLink.setAttribute("data-id", car.Id);
+            editLink.setAttribute("data-id", an.Id);
             editLink.setAttribute("style", "cursor:pointer;padding:3px;");
             editLink.setAttribute("class", "btn btn-warning");
             editLink.append("Change");
             editLink.addEventListener("click", e => {
  
                 e.preventDefault();
-                GettoForm(car.Id);
+                GettoForm(an.Id);
             });
             linksTd.append(editLink);
 
             const removeLink = document.createElement("a");
-            removeLink.setAttribute("data-id", car.Id);
+            removeLink.setAttribute("data-id", an.Id);
             removeLink.setAttribute("style", "cursor:pointer;padding:3px;");
             removeLink.setAttribute("onclick", "reloadPage();");
             removeLink.setAttribute("class", "btn btn-danger");
@@ -147,21 +147,22 @@
             removeLink.addEventListener("click", e => {
  
                 e.preventDefault();
-                Delete(car.Id);
+                Delete(an.Id);
                              
             });
             linksTd.append(removeLink);
 
             const linksTdTwo = document.createElement("td");
             const viewcust = document.createElement("button");
-            viewcust.setAttribute("data-id", car.Id);
+            viewcust.setAttribute("data-id", an.Id);
             viewcust.setAttribute("style", "cursor:pointer;padding:10px;");
-            viewcust.setAttribute("class", "btn btn-primary");    
-            viewcust.append("Top 3 similar");
+            viewcust.setAttribute("class", "btn btn-primary btn-lg");
+            viewcust.append("Similar");   
+
             viewcust.addEventListener("click", e => {
  
                 e.preventDefault();
-                //GetOrders(car.Id);
+                GetSim(an.Id);
                              
             });
             linksTdTwo.append(viewcust);
@@ -170,6 +171,33 @@
             tr.appendChild(linksTdTwo);
  
             return tr;
+        }
+
+        async function GetSim(id) {
+            const response = await fetch("https://localhost:44393/api/Announcement/similar/" + id, {
+                method: "Get",
+                headers: { "Accept": "application/json" }
+            });
+            const responList = await fetch("https://localhost:44393/api/Announcement", {
+                method: "GET",
+                headers: { "Accept": "application/json" },
+            });
+            if (response.ok === true) {
+                const an = await response.json();
+                const len = await responList.json();
+
+                console.log(an);
+                let i = 1;
+                while(i <= len.length)
+                {
+                document.querySelector("tr[data-rowid='" + i + "']").remove();                
+                i++;
+                }
+                let rows = document.querySelector("tbody"); 
+                an.forEach(a => {
+                    rows.append(row(a));
+                });   
+            }
         }
 
     document.forms["userForm"].addEventListener("submit", e => {
@@ -202,6 +230,7 @@
         }
 
     GetList();
+  
     </script>
 
 </body>

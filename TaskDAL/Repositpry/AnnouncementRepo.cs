@@ -26,6 +26,35 @@ namespace TaskDAL.Repositpry
             Context.Entry(entity).State = EntityState.Modified;
             return SaveChanges();
         }
+
+        public override List<Announcement> Similar(int? id)
+        {
+            List<Announcement> list = new List<Announcement>();
+            List<Announcement> similar = new List<Announcement>();
+
+            Announcement str = new Announcement();
+            str = Context.Announcements.Find(id);
+            string[] words = str.Title.Split(new char[] {' '});
+
+            list.AddRange(GetAll());
+
+            foreach (var item in list)
+            {
+                foreach (var i in words) 
+                {
+                    if (item.Title.Contains(i))
+                    {
+                        if (!similar.Any(x => x.Id == item.Id))
+                        {          
+                            similar.Add(item);
+                        }
+                    }
+                }
+            }
+            similar.Remove(str);
+
+            return (similar);
+        }
     }
     
 }
