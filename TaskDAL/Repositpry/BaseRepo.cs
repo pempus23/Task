@@ -9,7 +9,7 @@ using TaskDAL.EF;
 
 namespace TaskDAL.Repositpry
 {
-    public class BaseRepo<T> : IRepository<T> where T : EntityBase, new()
+    public abstract class BaseRepo<T> : IRepository<T> where T : EntityBase, new()
     {
         protected readonly DbSet<T> _table;
         private readonly TaskEntities _db;
@@ -19,15 +19,15 @@ namespace TaskDAL.Repositpry
             _db = new TaskEntities();
             _table = _db.Set<T>();
         }
-        public int Add(T entity)
+        public virtual int Add(T entity)
         {
-            _table.Add(entity);
+            _db.Entry(entity).State = EntityState.Added;
             return SaveChanges();
         }
 
         public int Delete(int id)
         {
-            Announcement ann = Context.Announcements.FirstOrDefault(row => row.Id == id);
+            Announcement ann = _db.Announcements.FirstOrDefault(row => row.Id == id);
             Context.Announcements.Remove(ann);
             return SaveChanges();
         }
@@ -40,12 +40,10 @@ namespace TaskDAL.Repositpry
         public virtual List<T> GetAll()
             => _table.ToList();
             
-        
-
         public T GetOne(int? id)
             => _table.Find(id);
 
-        public int Save(T entity)
+        public virtual int Save(T entity)
         {
             _db.Entry(entity).State = EntityState.Modified;
             return SaveChanges();
@@ -74,5 +72,8 @@ namespace TaskDAL.Repositpry
                 throw;
             }
         }
+
+        public abstract List<T> Similar(int? id);
+
     }
 }

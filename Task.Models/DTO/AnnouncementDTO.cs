@@ -7,6 +7,6 @@ namespace Task.Models.DTO
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime DataAdded { get; set; }
+        public DateTime DateAdded { get; set; }
     }
 }

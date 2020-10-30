@@ -10,6 +10,6 @@ namespace Task.Models
         public string Title { get; set; }
         [StringLength(150)]
         public string Description { get; set; }
-        public DateTime DataAdded { get; set; }
+        public DateTime DateAdded { get; set; }
     }
 }

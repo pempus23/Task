@@ -10,5 +10,6 @@ namespace TaskDAL.Repositpry
         T GetOne(int? id);
         List<T> GetAll();
         int Delete(int id);
+        List<T> Similar(int? id);
     }
 }
